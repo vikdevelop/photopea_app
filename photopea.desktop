@@ -5,3 +5,4 @@ Description=Alternative for Adobe Photoshop users
 Description[cs]=Alternativa pro uživatele Adobe Photoshopu
 Terminal=false
 Exec=photopea
+Category=Graphics
