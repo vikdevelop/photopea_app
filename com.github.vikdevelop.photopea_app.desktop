@@ -5,5 +5,5 @@ Description=Alternative for Adobe Photoshop users
 Description[cs]=Alternativa pro uživatele Adobe Photoshopu
 Terminal=false
 Icon=com.github.vikdevelop.photopea_app
-Exec=/var/lib/flatpak/app/com.github.vikdevelop.photopea_app/x86_64/test/active/files/bin/photopea
+Exec=/var/lib/flatpak/app/com.github.vikdevelop.photopea_app/x86_64/test/active/files/bin/photopea_app
 Category=Graphics
