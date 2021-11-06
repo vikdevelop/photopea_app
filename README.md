@@ -1,5 +1,7 @@
-# Photopea Desktop App for Linux
+# Photopea Desktop App for Flatpak
 ![Photopea](https://github.com/vikdevelop/photopea_app/blob/main/screenshots/photopea.png)
 
-## Installation
-### [Install Photopea from FlatHub →](https://flathub.org/apps/details/com.github.vikdevelop.photopea_app)
+![Photopea2](https://github.com/vikdevelop/photopea_app/blob/main/screenshots/photopea2.png)
+
+<h2>Install</h2>
+<a href="https://flathub.org/apps/details/com.github.vikdevelop.photopea_app"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" width=150 height=45></a>
