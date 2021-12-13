@@ -1,5 +1,5 @@
 # Photopea Desktop App for Flatpak
-![Photopea](https://github.com/vikdevelop/photopea_app/blob/main/screenshots/photopea.png)
+![Photopea](https://github.com/vikdevelop/photopea_app/blob/main/screenshots/photopea4.png)
 
 ![Photopea2](https://github.com/vikdevelop/photopea_app/blob/main/screenshots/photopea2.png)
 
