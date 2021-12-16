@@ -1,9 +1,11 @@
 [Desktop Entry]
 Name=Photopea
 Type=Application
-Description=Alternative for Adobe Photoshop users
-Description[cs]=Alternativa pro uživatele Adobe Photoshopu
+Comment=Alternative for Adobe Photoshop users
+Commment[cs]=Alternativa pro uživatele Adobe Photoshopu
+Comment[de]=Alternative für Benutzer von Adobe Photoshop
+Comment[sk]=bezplatná alternatíva pre používateľov programu Adobe Photoshop
 Terminal=false
-Icon=com.github.cylinuxcz.photopea_app
+Icon=com.github.vikdevelop.photopea_app
 Exec=photopea_app
-Category=Graphics
+Categories=Graphics
