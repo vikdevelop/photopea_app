@@ -4,6 +4,6 @@ Type=Application
 Description=Alternative for Adobe Photoshop users
 Description[cs]=Alternativa pro uživatele Adobe Photoshopu
 Terminal=false
-Icon=com.github.vikdevelop.photopea_app
+Icon=com.github.cylinuxcz.photopea_app
 Exec=photopea_app
 Category=Graphics
