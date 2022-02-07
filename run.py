@@ -1,4 +1,3 @@
-from npm.bindings import npm_run
 import os
-os.chdir("/app")
-stderr, stdout = npm_run('start')
+os.chdir("/usr/share/photopea_app")
+os.system("npm start")
