@@ -12,5 +12,5 @@
 ```
 npm install
 electron-packager . photopea --platform linux --arch x64 --out dist/
-sh install.sh
+sudo sh install.sh
 ```
