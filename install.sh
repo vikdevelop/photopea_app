@@ -8,6 +8,5 @@ cp LICENSE /usr/share/licenses/photopea_app/
 # Install Binary file
 cp -R dist/photopea-linux-x64 /usr/share/
 cd /usr/share/photopea-linux-x64 
-ln -s photopea photopea_bin
-cp photopea_bin /usr/bin/
+ln -s /usr/share/photopea-linux-x64/photopea /usr/bin/photopea
 echo "Photopea was installed successfully!"
