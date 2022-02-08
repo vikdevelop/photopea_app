@@ -2,6 +2,7 @@ import os
 import shutil
 #os.system("npm install")
 os.makedirs("/usr/share/photopea_app")
+os.system("chmod +x photopea.py")
 shutil.move("node_modules", "/usr/share/photopea_app/")
 shutil.move("com.github.vikdevelop.photopea_app.desktop", "/usr/share/applications/")
 shutil.move("data/icons/com.github.vikdevelop.photopea_app.png", "/usr/share/icons/hicolor/128x128/apps/")
