@@ -7,6 +7,8 @@
 <a href="https://flathub.org/apps/details/com.github.vikdevelop.photopea_app"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" width=150 height=45></a>
 
 <h2>Install (Javascript version)</h2>
+
+
 ```
 npm install
 electron-packager . photopea --platform linux --arch x64 --out dist/
