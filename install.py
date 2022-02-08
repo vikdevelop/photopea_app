@@ -1,7 +1,6 @@
 import os
 import shutil
-os.system("npm install")
-os.system("sudo -u")
+#os.system("npm install")
 os.makedirs("/usr/share/photopea_app")
 shutil.move("node_modules", "/usr/share/photopea_app/")
 shutil.move("com.github.vikdevelop.photopea_app.desktop", "/usr/share/applications/")
