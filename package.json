@@ -1,25 +1,20 @@
 {
-  "name": "canvadesktop",
+  "name": "photopea_app",
   "version": "0.0.1",
   "license": "MIT",
-  "description": "Canva Desktop App use electron",
+  "description": "Photopea Desktop App use electron",
   "author": "vikdevelop",
-  "main": "src/main.js",
+  "main": "src/main/main.js",
   "scripts": {
     "postinstall": "install-app-deps",
     "pack": "build --dir",
     "start": "electron .",
     "dist": "build ."
   },
-  
-  "dependencies": {
-
-    "electron-packager": "latest"
-  },
   "devDependencies": {
     "electron": "latest",
     "electron-builder": "latest",
-    "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "electron-packager": "latest",
+    "electron-prebuilt": "latest"
   }
 }
