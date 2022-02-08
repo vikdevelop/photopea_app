@@ -10,5 +10,5 @@
 ```
 npm install
 electron-packager . photopea --platform linux --arch x64 --out dist/
-python3 install.py
+sh install.sh
 ```
