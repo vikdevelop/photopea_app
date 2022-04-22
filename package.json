@@ -1,7 +1,7 @@
 {
   "name": "photopea",
   "version": "2.0.2",
-  "description": "Electron app of photopea webapp",
+  "description": "Electron app of photopea website",
   "main": "src/main/main.js",
   "scripts": {
     "start": "electron ."
@@ -21,7 +21,7 @@
     "electron-packager": "^5.2.0"
   },
   "dependencies": {
-    "mksnapshot": "0.1.0",
+    "mksnapshot": "0.3.5",
     "yarn": "^1.22.18",
     "yauzl": "^2.10.0"
   },
