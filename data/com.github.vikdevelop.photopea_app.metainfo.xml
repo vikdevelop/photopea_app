@@ -36,7 +36,12 @@
     </categories>
     
     <releases>
-        <release version="2.2" date="2022-02-06">
+        <release version="2.2" date="2022-04-22">
+            <description>
+                <p>Changend the rendering kernel from WebKitGTK to electron.</p>
+            </description>
+        </release>
+        <release version="2.1" date="2022-02-06">
           <description>
             <ul>
               <li>Updated .desktop file - Comment has been translated into more languages:</li>
