@@ -1,20 +1,29 @@
 {
-  "name": "photopea_app",
-  "version": "0.0.1",
-  "license": "MIT",
-  "description": "Photopea Desktop App use electron",
-  "author": "vikdevelop",
+  "name": "photopea",
+  "version": "2.0.2",
+  "description": "Electron app of photopea webapp",
   "main": "src/main/main.js",
   "scripts": {
-    "postinstall": "install-app-deps",
-    "pack": "build --dir",
-    "start": "electron .",
-    "dist": "build ."
+    "start": "electron ."
   },
+  "repository": "https://github.com/vikdevelop/photopea_app",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "vikdevelop",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "latest",
-    "electron-builder": "latest",
-    "electron-packager": "latest",
-    "electron-prebuilt": "latest"
-  }
+    "electron": "^15.4.1",
+    "electron-packager": "^5.2.0"
+  },
+  "dependencies": {
+    "mksnapshot": "^0.1.0",
+    "yarn": "^1.22.18",
+    "yauzl": "^2.10.0"
+  },
+  "private": false
 }
