@@ -18,10 +18,10 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^15.4.1",
-    "electron-packager": "^5.2.0"
+    "electron-packager": "^15.5.1"
   },
   "dependencies": {
-    "mksnapshot": "^0.3.5",
+    "mksnapshot": "^0.1.0",
     "yarn": "^1.22.18",
     "yauzl": "^2.10.0"
   },
