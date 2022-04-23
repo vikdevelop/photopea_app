@@ -13,5 +13,5 @@ Comment[fi]=Vaihtoehto Adobe Photoshopin käyttäjille
 Comment[it]=Un alternativa per gli utenti di Adobe Photoshop
 Terminal=false
 Icon=com.github.vikdevelop.photopea_app
-Exec=photopea_bin
+Exec=photopea.sh
 Categories=Graphics
