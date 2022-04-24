@@ -36,6 +36,11 @@
     </categories>
     
     <releases>
+        <release version="2.3" date="2022-04-24">
+            <description>
+                <p>Changed rendering kernel from WebKitGTK to Electron. This makes the application easier to work with, and faster.</p>
+            </description>
+        </release>
         <release version="2.2" date="2022-02-06">
           <description>
             <ul>
