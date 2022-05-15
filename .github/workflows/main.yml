@@ -1,0 +1,31 @@
+name: photopea_app
+
+on: push
+
+jobs:
+  release:
+    runs-on: ${{ matřix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: test
+
+
+      - name: photopea_app
+        uses: samuelmeuli/action-electron-packager@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+
+          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
