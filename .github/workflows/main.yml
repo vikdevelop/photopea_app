@@ -16,10 +16,6 @@ jobs:
         with:
           cmd: install
       - uses: borales/actions-yarn@v2.3.0
-
-      - name: photopea_app
-        uses: samuelmeuli/action-electron-builder@v1
+      - uses: borales/actions-yarn@v2.3.0
         with:
-          github_token: ${{ secrets.github_token }}
-
-          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+          cmd: electron-packager ./ photopea --platform=linux --arch=x64 --electron-version=15.4.1 --out=photopea_build/
