@@ -24,7 +24,7 @@ jobs:
 
 
       - name: photopea_app
-        uses: samuelmeuli/action-electron-packager@v1
+        uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ secrets.github_token }}
 
