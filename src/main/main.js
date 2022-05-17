@@ -10,10 +10,10 @@ function createWindow () {
     autoHideMenuBar: 'true',
     transparent: 'true',
     webPreferences: {
-      preload: path.join(__dirname, 'renderer/preload.js')
+      preload: path.join(__dirname, 'src/renderer/preload.js')
     }
   })
-
+  // load Photopea webapp
   mainWindow.loadURL('https://photopea.com')
 }
 
