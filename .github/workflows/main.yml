@@ -15,4 +15,7 @@ jobs:
       - uses: borales/actions-yarn@v2.3.0
       - uses: borales/actions-yarn@v2.3.0
         with:
+          cmd: install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
           cmd: electron-packager ./ photopea --platform=linux --arch=x64 --electron-version=15.4.1 --out=photopea_build/
