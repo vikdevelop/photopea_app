@@ -1,4 +1,5 @@
 const {app, BrowserWindow} = require('electron')
+const { blockWindowAds } = require('@cliqz/adblocker-electron')
 const path = require('path')
 
 function createWindow () {
@@ -15,6 +16,8 @@ function createWindow () {
   })
   // load Photopea webapp
   mainWindow.loadURL('https://photopea.com')
+  blockWindowAds(mainWindow);
+  
 }
 
 app.whenReady().then(() => {
