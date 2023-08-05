@@ -21,6 +21,7 @@
     "electron-packager": "^17.1.1"
   },
   "dependencies": {
+    "@cliqz/adblocker-electron": "^1.26.6",
     "mksnapshot": "^0.3.5",
     "yarn": "^1.22.19",
     "yauzl": "^2.10.0"
