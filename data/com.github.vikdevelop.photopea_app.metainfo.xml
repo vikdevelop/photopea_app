@@ -47,6 +47,11 @@
     </branding>
     
     <releases>
+        <release version="2.3.6" date="2022-11-27">
+            <description>
+                <p>Added support for blocking ads.</p>
+            </description>
+        </release>
         <release version="2.3.5" date="2022-11-27">
             <description>
                 <p>Updated Electron (or other components) to latest version.</p>
