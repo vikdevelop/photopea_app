@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
     <id>com.github.vikdevelop.photopea_app</id>
@@ -6,7 +7,9 @@
     <summary>Advanced image editor</summary>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>MIT</project_license>
-    <developer_name>vikdevelop</developer_name>
+    <developer id="io.github.vikdevelop">
+      <name>vikdevelop</name>
+    </developer>
     
     <description>
         <p>Photocrea is a free image editor that includes all the familiar features like layers, filters, magic wand selection, etc. It supports formats from Adobe Photoshop i.e. .PSD, but also .XCF from GIMP, .Sketch from Sketch App, .XD from Adobe XD and .CDR from CorelDRAW software. From 2020 it also supports .FIG files from WinFIG, .RAW and .TGA images. </p>
@@ -47,14 +50,19 @@
     </branding>
     
     <releases>
+        <release version="2.3.8" date="2025-03-29">
+            <description>
+                <p>Fixed blocking the ads (#7), thanks to @Melechtna</p>
+            </description>
+        </release>
         <release version="2.3.7" date="2024-06-17">
             <description>
                 <p>Changed name and icon of the application.</p>
             </description>
-        <release>
+        </release>
         <release version="2.3.6" date="2022-11-27">
             <description>
-                <p>Added support for blocking ads.</p>
+                <p>Minor bug fixes</p>
             </description>
         </release>
         <release version="2.3.5" date="2022-11-27">
@@ -69,12 +77,12 @@
         </release>
         <release version="2.2" date="2022-02-06">
           <description>
-              <p>Updated .desktop file</p>
+              <p>Updated the .desktop file</p>
           </description>
         </release>
         <release version="2.0" date="2021-12-13">
            <description>
-               <p>Edited max. resolution from 1920x1080 px to 3840x2160 px.</p>
+               <p>Edited the maximum resolution from 1920x1080 px to 3840x2160 px.</p>
            </description>
         </release>
         <release version="1.2" date="2021-11-06">
