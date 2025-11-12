@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
     <id>com.github.vikdevelop.photopea_app</id>
@@ -25,15 +24,11 @@
     <screenshots>
         <screenshot type="default">
             <caption>Initial Page</caption>
-            <image>https://raw.githubusercontent.com/vikdevelop/photopea_app/js/screenshots/Photopea-1.png</image>
+            <image>https://raw.githubusercontent.com/vikdevelop/photopea_app/js/data/screenshots/photopea_home.png</image>
         </screenshot>
         <screenshot>
             <caption>New Project Page</caption>
-            <image>https://raw.githubusercontent.com/vikdevelop/photopea_app/js/screenshots/Photopea_2.png</image>
-        </screenshot>
-        <screenshot>
-            <caption>Templates Page</caption>
-            <image>https://raw.githubusercontent.com/vikdevelop/photopea_app/js/screenshots/Photopea_3.png</image>
+            <image>https://raw.githubusercontent.com/vikdevelop/photopea_app/js/data/screenshots/photopea_project_page.png</image>
         </screenshot>
     </screenshots>
     
@@ -50,6 +45,11 @@
     </branding>
     
     <releases>
+        <release version="2.3.9" date="2025-11-12">
+            <description>
+                <p>Returned the Account button to log in to Photopea (#9) and also improved support for Wayland.</p>
+            </description>
+        </release>
         <release version="2.3.8" date="2025-03-29">
             <description>
                 <p>Fixed blocking the ads (#7), thanks to @Melechtna</p>

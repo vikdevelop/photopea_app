@@ -1,0 +1,40 @@
+app-id: com.github.vikdevelop.photopea_app
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: "25.08"
+command: photopea.sh
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node24
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=network
+  - --filesystem=xdg-download
+  - --device=dri
+build-options:
+  append-path: /usr/lib/sdk/node24/bin
+  env:
+    NPM_CONFIG_LOGLEVEL: info
+modules:
+  - name: photopea_app
+    buildsystem: simple
+    build-options:
+        env:
+          XDG_CACHE_HOME: /run/build/photopea/flatpak-node/cache
+    build-commands:
+    - install -D -t /app/bin photopea.sh
+    - mkdir /app/main
+    - cp -R build/photopea-linux-x64/* /app/main
+    - install -Dm755 -t /app/share/applications data/com.github.vikdevelop.photopea_app.desktop
+    - install -Dm644 -t /app/share/icons/hicolor/128x128/apps/ data/icons/com.github.vikdevelop.photopea_app.png
+    - install -Dm644 -t /app/share/metainfo data/com.github.vikdevelop.photopea_app.metainfo.xml
+    sources:
+      - type: dir
+        path: .
+      - type: script
+        dest-filename: photopea.sh
+        commands:
+          - zypak-wrapper.sh /app/main/photopea "$@"

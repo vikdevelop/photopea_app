@@ -1,29 +1,22 @@
 {
   "name": "photopea",
-  "version": "2.0.2",
+  "version": "2.3.9",
   "description": "Electron app of photopea website",
   "main": "src/main.js",
   "scripts": {
     "start": "electron ."
   },
   "repository": "https://github.com/vikdevelop/photopea_app",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
   "author": "vikdevelop",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^24.0.0",
-    "electron-packager": "^17.1.1"
+    "electron": "^39.1.2",
+    "@electron/packager": "^19.0.1"
   },
   "dependencies": {
     "mksnapshot": "^0.3.5",
-    "yarn": "^1.22.19",
-    "yauzl": "^2.10.0"
+    "yarn": "^1.22.22",
+    "yauzl": "^3.2.0"
   },
   "private": false
 }

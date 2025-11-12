@@ -10,7 +10,6 @@ async function createWindow() {
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
-            preload: path.join(__dirname, 'renderer/renderer.js')
         },
     });
 
