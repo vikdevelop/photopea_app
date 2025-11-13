@@ -1,10 +1,13 @@
 # Photocrea Desktop App for Flatpak
-![Photopea](https://github.com/vikdevelop/photopea_app/blob/js/screenshots/Photopea-1.png)
+![Photopea](https://github.com/vikdevelop/photopea_app/blob/js/data/screenshots/photopea_home.png)
 
-![Photopea2](https://github.com/vikdevelop/photopea_app/blob/js/screenshots/Photopea_2.png)
+![Photopea2](https://github.com/vikdevelop/photopea_app/blob/js/data/screenshots/photopea_project_page.png)
 
 <h2>Install Electron version</h2>
-<a href="https://flathub.org/apps/details/com.github.vikdevelop.photopea_app"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" width=150 height=45></a>
+<a href='https://flathub.org/apps/com.github.vikdevelop.photopea_app'>
+<img width='240' alt='Get it on Flathub' src='https://flathub.org/api/badge?locale=en'/>
+</a>
+
 <h2>Build WebkitGTK (C++) version</h2>
 
 ```bash
