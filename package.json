@@ -1,6 +1,6 @@
 {
   "name": "photopea",
-  "version": "2.3.9",
+  "version": "2.4.0",
   "description": "Electron app of photopea website",
   "main": "src/main.js",
   "scripts": {
@@ -16,7 +16,8 @@
   "dependencies": {
     "mksnapshot": "^0.3.5",
     "yarn": "^1.22.22",
-    "yauzl": "^3.2.0"
+    "yauzl": "^3.2.0",
+    "electron-window-state": "^5.0.3"
   },
   "private": false
 }

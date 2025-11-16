@@ -6,3 +6,4 @@ Terminal=false
 Icon=com.github.vikdevelop.photopea_app
 Exec=photopea.sh
 Categories=Graphics
+StartupWMClass=photopea
