@@ -45,6 +45,14 @@
     </branding>
     
     <releases>
+        <release version="2.4.0" date="2025-11-16">
+            <description>
+                <ul>
+                    <li>Fixed the window icon (#10)</li>
+                    <li>Added support for remembering the window state</li>
+                </ul>
+            </description>
+        </release>
         <release version="2.3.9" date="2025-11-12">
             <description>
                 <p>Returned the Account button to log in to Photopea (#9) and also improved support for Wayland.</p>
@@ -52,7 +60,7 @@
         </release>
         <release version="2.3.8" date="2025-03-29">
             <description>
-                <p>Fixed blocking the ads (#7), thanks to @Melechtna</p>
+                <p>Fixed blocking ads (#7), thanks to @Melechtna</p>
             </description>
         </release>
         <release version="2.3.7" date="2024-06-17">
