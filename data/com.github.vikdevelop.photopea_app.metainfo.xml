@@ -45,6 +45,15 @@
     </branding>
     
     <releases>
+        <release version="2.4.1" date="2026-02-13">
+            <description>
+                <ul>
+                    <li>Added a new native network ad-blocker to prevent intrusive third-party ads and tracking from loading.</li>
+                    <li>Fixed the issue where ads returned due to upstream changes in the web app.</li>
+                    <li>Note: The right sidebar prompting for Photopea Premium is hardcoded into the core layout and remains visible to prevent the UI and editing tools from breaking.</li>
+                </ul>
+            </description>
+        </release>
         <release version="2.4.0" date="2025-11-16">
             <description>
                 <ul>
