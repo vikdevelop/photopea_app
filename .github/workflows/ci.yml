@@ -42,7 +42,7 @@ jobs:
 
       - name: Build Flatpak
         run: |
-          flatpak-builder --force-clean --sandbox --repo=phrepo build com.github.vikdevelop.photopea_app.json
+          flatpak-builder --force-clean --sandbox --repo=phrepo build com.github.vikdevelop.photopea_app.yaml
           flatpak build-bundle phrepo com.github.vikdevelop.photopea_app.flatpak com.github.vikdevelop.photopea_app
 
       - name: Upload Flatpak artifact
