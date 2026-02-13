@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: Install dependencies
         run: |
@@ -38,7 +38,7 @@ jobs:
           flatpak install --user -y flathub org.freedesktop.Platform//25.08
           flatpak install --user -y flathub org.freedesktop.Sdk//25.08
           flatpak install --user -y org.electronjs.Electron2.BaseApp//25.08
-          flatpak install --user -y org.freedesktop.Sdk.Extension.node24
+          flatpak install --user -y org.freedesktop.Sdk.Extension.node24//25.08
 
       - name: Build Flatpak
         run: |
