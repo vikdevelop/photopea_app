@@ -11,8 +11,8 @@ const devMode = false;
 // Function to create the main browser window
 function createWindow() {
     const mainWindowState = windowStateKeeper({
-        defaultWidth: 1366,
-        defaultHeight: 768,
+        defaultWidth: 1600,
+        defaultHeight: 900,
     });
 
     const win = new BrowserWindow({
@@ -74,8 +74,8 @@ function createWindow() {
         `;
 
         win.webContents.executeJavaScript(injectAdsBlocker)
-            .then(() => console.log('Ad-block skript úspěšně injektnut!'))
-            .catch(err => console.error('Ups, nepovedlo se injektnout skript:', err));
+            .then(() => console.log('Ad-block script injected successfully!'))
+            .catch(err => console.error('ERR:', err));
     });
 
     console.log('Loading Photopea with #8887');
