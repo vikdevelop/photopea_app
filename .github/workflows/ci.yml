@@ -37,8 +37,8 @@ jobs:
           flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
           flatpak install --user -y flathub org.freedesktop.Platform//25.08
           flatpak install --user -y flathub org.freedesktop.Sdk//25.08
-          flatpak install --user org.electronjs.Electron2.BaseApp//25.08
-          flatpak install --user org.freedesktop.Sdk.Extension.node24
+          flatpak install --user -y org.electronjs.Electron2.BaseApp//25.08
+          flatpak install --user -y org.freedesktop.Sdk.Extension.node24
 
       - name: Build Flatpak
         run: |
