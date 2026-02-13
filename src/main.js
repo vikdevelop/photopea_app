@@ -10,41 +10,75 @@ const devMode = false;
 
 // Function to create the main browser window
 function createWindow() {
-    // Retrieve and manage the window state (position and size) from previous session
     const mainWindowState = windowStateKeeper({
-        defaultWidth: 1366, // Default width of the window
-        defaultHeight: 768, // Default height of the window
+        defaultWidth: 1366,
+        defaultHeight: 768,
     });
 
-    // Create the main browser window with the loaded window state (position, size)
     const win = new BrowserWindow({
         x: mainWindowState.x,
         y: mainWindowState.y,
         width: mainWindowState.width,
         height: mainWindowState.height,
-        icon: "/app/share/icons/hicolor/128x128/apps/com.github.vikdevelop.photopea_app.png", // Set window icon
-        autoHideMenuBar: true, // Automatically hide the menu bar
+        icon: "/app/share/icons/hicolor/128x128/apps/com.github.vikdevelop.photopea_app.png",
+        autoHideMenuBar: true,
         webPreferences: {
-            nodeIntegration: false, // Disable Node.js integration for security
-            contextIsolation: true, // Isolate context for security
+            nodeIntegration: false,
+            contextIsolation: true
         },
     });
 
-    // Hide the menu bar
     win.setMenuBarVisibility(false);
-
-    // Manage the window state (position and size) on window resize or move
     mainWindowState.manage(win);
 
-    // Development mode settings (if enabled)
     if (devMode) {
-        win.setMenuBarVisibility(true); // Show the menu bar in development mode
-        win.webContents.openDevTools(); // Open Developer Tools in development mode
+        win.setMenuBarVisibility(true);
+        win.webContents.openDevTools();
     }
 
-    // Log message when loading Photopea
+    win.webContents.on('dom-ready', () => {
+        const injectAdsBlocker = `
+            const script = document.createElement('script');
+            script.textContent = \`
+                function resize() {
+                    const appEl = document.querySelector(".app");
+                    const appDiv = document.querySelector(".app > div");
+                    if (!appEl || !appDiv) return; // Safety check, kdyby se DOM nenačetl
+                    
+                    const adWidth = appEl.offsetWidth - appDiv.offsetWidth;
+                    Object.defineProperty(window, "innerWidth", {
+                        get() {
+                            return parseInt(document.documentElement.offsetWidth, 10) + adWidth;
+                        },
+                    });
+                    window.dispatchEvent(new Event("resize"));
+                }
+                
+                const observer = new MutationObserver((mutations) => {
+                    for (const mutation of mutations) {
+                        for (const node of mutation.addedNodes) {
+                            if (node.nodeType === 1 && node.matches(".app *")) {
+                                observer.disconnect();
+                                resize();
+                                return;
+                            }
+                        }
+                    }
+                });
+                
+                if (document.body) {
+                    observer.observe(document.body, { childList: true, subtree: true });
+                }
+            \`;
+            document.head.appendChild(script);
+        `;
+
+        win.webContents.executeJavaScript(injectAdsBlocker)
+            .then(() => console.log('Ad-block skript úspěšně injektnut!'))
+            .catch(err => console.error('Ups, nepovedlo se injektnout skript:', err));
+    });
+
     console.log('Loading Photopea with #8887');
-    // Load the Photopea URL with a specific identifier (e.g., #8887)
     win.loadURL('https://www.photopea.com/#8887');
 
     return win;
