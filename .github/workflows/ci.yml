@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y flatpak flatpak-builder appstream yarn npm
+
+      - name: Validate AppStream metainfo
+        run: |
+          appstreamcli validate data/com.github.vikdevelop.photopea_app.metainfo.xml
+
+      - name: Configure YARN
+        run: |
+          yarn
+          mkdir build
+          yarn electron-packager ./ photopea --platform=linux --arch=x64 --electron-version=40.4.0 --out=build/
+
+      - name: Install Freedesktop Platform and SDK
+        run: |
+          flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user -y flathub org.freedesktop.Platform//25.08
+          flatpak install --user -y flathub org.freedesktop.Sdk//25.08
+          flatpak install --user org.electronjs.Electron2.BaseApp//25.08
+          flatpak install --user org.freedesktop.Sdk.Extension.node20
+
+      - name: Build Flatpak
+        run: |
+          flatpak-builder --force-clean --sandbox --repo=phrepo build com.github.vikdevelop.photopea_app.json
+          flatpak build-bundle phrepo com.github.vikdevelop.photopea_app.flatpak com.github.vikdevelop.photopea_app
+
+      - name: Upload Flatpak artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Photopea-flatpak
+          path: com.github.vikdevelop.photopea_app.flatpak
