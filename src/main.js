@@ -34,42 +34,6 @@ function createWindow() {
         win.webContents.openDevTools();
     }
 
-    win.webContents.on('dom-ready', () => {
-        // 1. CSS Nuke: Zkusíme natvrdo skrýt známé třídy reklam
-        win.webContents.insertCSS(`
-            .sbar { display: none !important; }
-            .flexrow { width: 100% !important; }
-        `).catch(err => console.error('CSS injection failed:', err));
-
-        // 2. JS Nuke: Brute force smyčka, která přežije i kliknutí na "New Project"
-        const injectAdsBlocker = `
-            setInterval(() => {
-                const appEl = document.querySelector(".app");
-                const appDiv = document.querySelector(".app > div");
-                
-                if (appEl && appDiv) {
-                    // Spočítej reálnou šířku bez reklamního panelu
-                    const adWidth = appEl.offsetWidth - appDiv.offsetWidth;
-                    
-                    if (adWidth > 0) {
-                        // Přepisování vnitřních proměnných okna, aby si canvas myslel, že je okno větší
-                        Object.defineProperty(window, "innerWidth", {
-                            configurable: true,
-                            get() {
-                                return parseInt(document.documentElement.offsetWidth, 10) + adWidth;
-                            },
-                        });
-                        window.dispatchEvent(new Event("resize"));
-                    }
-                }
-            }, 1000); // Každou vteřinu zkontroluje, jestli se UI nerozpadlo
-        `;
-
-        win.webContents.executeJavaScript(injectAdsBlocker)
-            .then(() => console.log('UI nuke locked in!'))
-            .catch(err => console.error('JS nuke failed:', err));
-    });
-
     console.log('Loading Photopea with #8887');
     win.loadURL('https://www.photopea.com/#8887');
 
@@ -77,11 +41,10 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-    // Zapnutí síťového adblockeru (Ghostery)
     ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
         blocker.enableBlockingInSession(session.defaultSession);
-        console.log('Network adblocker enabled, chief.');
-    });
+        console.log('Network adblocker locked in. No tracking allowed.');
+    }).catch(err => console.error('Failed to load the blocker:', err));
 
     app.on('browser-window-created', (_, window) => {
         window.setMenuBarVisibility(false);
