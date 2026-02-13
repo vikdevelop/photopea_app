@@ -32,7 +32,7 @@ jobs:
           flatpak install --user -y flathub org.freedesktop.Platform//25.08
           flatpak install --user -y flathub org.freedesktop.Sdk//25.08
           flatpak install --user org.electronjs.Electron2.BaseApp//25.08
-          flatpak install --user org.freedesktop.Sdk.Extension.node20
+          flatpak install --user org.freedesktop.Sdk.Extension.node24
 
       - name: Build Flatpak
         run: |
