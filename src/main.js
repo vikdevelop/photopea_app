@@ -1,18 +1,16 @@
 const { app, BrowserWindow, session } = require('electron');
 const path = require('path');
 const windowStateKeeper = require('electron-window-state');
+const { ElectronBlocker } = require('@ghostery/adblocker-electron');
+const fetch = require('cross-fetch');
 
-// Set the app name
 app.setName('photopea');
-
-// Variable to control if the app is in development mode
 const devMode = false;
 
-// Function to create the main browser window
 function createWindow() {
     const mainWindowState = windowStateKeeper({
-        defaultWidth: 1600,
-        defaultHeight: 900,
+        defaultWidth: 1366,
+        defaultHeight: 768,
     });
 
     const win = new BrowserWindow({
@@ -24,7 +22,7 @@ function createWindow() {
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: false,
-            contextIsolation: true
+            contextIsolation: true,
         },
     });
 
@@ -37,45 +35,39 @@ function createWindow() {
     }
 
     win.webContents.on('dom-ready', () => {
+        // 1. CSS Nuke: Zkusíme natvrdo skrýt známé třídy reklam
+        win.webContents.insertCSS(`
+            .sbar { display: none !important; }
+            .flexrow { width: 100% !important; }
+        `).catch(err => console.error('CSS injection failed:', err));
+
+        // 2. JS Nuke: Brute force smyčka, která přežije i kliknutí na "New Project"
         const injectAdsBlocker = `
-            const script = document.createElement('script');
-            script.textContent = \`
-                function resize() {
-                    const appEl = document.querySelector(".app");
-                    const appDiv = document.querySelector(".app > div");
-                    if (!appEl || !appDiv) return; // Safety check, kdyby se DOM nenačetl
-                    
+            setInterval(() => {
+                const appEl = document.querySelector(".app");
+                const appDiv = document.querySelector(".app > div");
+                
+                if (appEl && appDiv) {
+                    // Spočítej reálnou šířku bez reklamního panelu
                     const adWidth = appEl.offsetWidth - appDiv.offsetWidth;
-                    Object.defineProperty(window, "innerWidth", {
-                        get() {
-                            return parseInt(document.documentElement.offsetWidth, 10) + adWidth;
-                        },
-                    });
-                    window.dispatchEvent(new Event("resize"));
-                }
-                
-                const observer = new MutationObserver((mutations) => {
-                    for (const mutation of mutations) {
-                        for (const node of mutation.addedNodes) {
-                            if (node.nodeType === 1 && node.matches(".app *")) {
-                                observer.disconnect();
-                                resize();
-                                return;
-                            }
-                        }
+                    
+                    if (adWidth > 0) {
+                        // Přepisování vnitřních proměnných okna, aby si canvas myslel, že je okno větší
+                        Object.defineProperty(window, "innerWidth", {
+                            configurable: true,
+                            get() {
+                                return parseInt(document.documentElement.offsetWidth, 10) + adWidth;
+                            },
+                        });
+                        window.dispatchEvent(new Event("resize"));
                     }
-                });
-                
-                if (document.body) {
-                    observer.observe(document.body, { childList: true, subtree: true });
                 }
-            \`;
-            document.head.appendChild(script);
+            }, 1000); // Každou vteřinu zkontroluje, jestli se UI nerozpadlo
         `;
 
         win.webContents.executeJavaScript(injectAdsBlocker)
-            .then(() => console.log('Ad-block script injected successfully!'))
-            .catch(err => console.error('ERR:', err));
+            .then(() => console.log('UI nuke locked in!'))
+            .catch(err => console.error('JS nuke failed:', err));
     });
 
     console.log('Loading Photopea with #8887');
@@ -84,28 +76,26 @@ function createWindow() {
     return win;
 }
 
-// When the app is ready, create the window
 app.whenReady().then(() => {
-
-    // Set event listener for when a new browser window is created
-    app.on('browser-window-created', (_, window) => {
-        window.setMenuBarVisibility(false); // Ensure menu bar is hidden
-        window.autoHideMenuBar = true; // Set menu bar to auto-hide
+    // Zapnutí síťového adblockeru (Ghostery)
+    ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
+        blocker.enableBlockingInSession(session.defaultSession);
+        console.log('Network adblocker enabled, chief.');
     });
 
-    // Create the main window
+    app.on('browser-window-created', (_, window) => {
+        window.setMenuBarVisibility(false);
+        window.autoHideMenuBar = true;
+    });
+
     createWindow();
 });
 
-// Handle window close event
 app.on('window-all-closed', () => {
-    // On non-Mac platforms, quit the app when all windows are closed
     if (process.platform !== 'darwin') app.quit();
 });
 
-// Handle app activation event (for example, when clicking on the dock icon)
 app.on('activate', () => {
-    // If no windows are open, create a new one
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
